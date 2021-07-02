@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <v-btn color="error" fab><v-icon>mdi-reload</v-icon></v-btn>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </v-app>
 </template>
