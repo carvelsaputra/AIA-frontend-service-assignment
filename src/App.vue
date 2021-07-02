@@ -1,29 +1,17 @@
 <template>
   <v-app>
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <v-btn color="error" fab><v-icon>mdi-reload</v-icon></v-btn>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-card  flat height="200px" tile>
+      <v-toolbar color="#d31145">
+        <v-toolbar-title><h3 class="white--text">AIA Assignment</h3></v-toolbar-title>
+      </v-toolbar>
+    </v-card>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
