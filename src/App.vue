@@ -19,13 +19,9 @@
 import PublicImageContainer from "./components/PublicImageContainer.vue";
 export default {
   name: "App",
+ 
   components: {
     PublicImageContainer,
   },
-
-  mounted() {
-    console.log(process.env);
-  },
 };
 </script>
-

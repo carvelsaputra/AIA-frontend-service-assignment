@@ -129,7 +129,7 @@
   </v-container>
 </template>
 <script>
-import { mapActions } from "vuex";
+// import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -255,7 +255,8 @@ export default {
     };
   },
   mounted() {
-    this.fetch();
+    // this.fetch();
+    this.$store.dispatch("publicImage")
   },
   computed: {
     numberOfPages() {
@@ -266,9 +267,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      fetch: "publicImage",
-    }),
+    // ...mapActions({
+    //   fetch: "publicImage",
+    // }),
     nextPage() {
       if (this.page + 1 <= this.numberOfPages) this.page += 1;
     },
