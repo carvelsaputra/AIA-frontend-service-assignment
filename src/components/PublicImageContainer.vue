@@ -1,7 +1,8 @@
 <template>
   <v-container fluid>
     <v-data-iterator
-      :items="items"
+      :loading="fetching"
+      :items="list"
       :items-per-page.sync="itemsPerPage"
       :page.sync="page"
       :search="search"
@@ -48,34 +49,30 @@
         <v-row>
           <v-col
             v-for="item in props.items"
-            :key="item.name"
+            :key="item.author_id"
             cols="12"
             sm="6"
             md="4"
             lg="3"
           >
-            <v-card>
+            <v-card height="100%">
+              <v-img
+                height="250"
+                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+              ></v-img>
               <v-card-title class="subheading font-weight-bold">
-                {{ item.name }}
+                {{ item.title }}
               </v-card-title>
 
               <v-divider></v-divider>
 
-              <v-list dense>
-                <v-list-item v-for="(key, index) in filteredKeys" :key="index">
-                  <v-list-item-content
-                    :class="{ 'blue--text': sortBy === key }"
-                  >
-                    {{ key }}:
-                  </v-list-item-content>
-                  <v-list-item-content
-                    class="align-end"
-                    :class="{ 'blue--text': sortBy === key }"
-                  >
-                    {{ item[key.toLowerCase()] }}
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
+              <v-card-text>
+                <div class="my-4 text-subtitle-1">
+                  {{ item.link }}
+                </div>
+
+                <div v-html="item.description"></div>
+              </v-card-text>
             </v-card>
           </v-col>
         </v-row>
@@ -129,7 +126,7 @@
   </v-container>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -255,9 +252,17 @@ export default {
     };
   },
   mounted() {
-    this.fetch();
+    this.fetch().then((res) => {
+      console.log(res);
+      console.log(this.list);
+    });
   },
+
   computed: {
+    ...mapGetters({
+      fetching: "publicImage/fetching",
+      list: "publicImage/list",
+    }),
     numberOfPages() {
       return Math.ceil(this.items.length / this.itemsPerPage);
     },
@@ -267,7 +272,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetch: "publicImage",
+      fetch: "publicImage/fetch",
     }),
     nextPage() {
       if (this.page + 1 <= this.numberOfPages) this.page += 1;

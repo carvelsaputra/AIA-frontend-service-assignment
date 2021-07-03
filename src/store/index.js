@@ -1,14 +1,6 @@
-import axios from "../../src/plugins/axios";
+import publicImageModule from "./publicImage";
 
 export default {
-  state: {},
-  mutations: {},
-  actions: {
-    publicImage() {
-      return axios.get("public-image").then(res=>{
-          console.log(res);
-      });
-    },
-  },
-  getters: {},
+  namespaced: true,
+  modules: { publicImage: publicImageModule },
 };
