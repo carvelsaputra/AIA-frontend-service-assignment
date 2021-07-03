@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Axios from "axios";
-
-Vue.prototype.$request = Axios.create({
-    baseURL: ""
+const axios = Axios.create({
+  baseURL: process.env.SERVER_HOST,
 });
+Vue.prototype.$request = axios;
+
+export default axios;
