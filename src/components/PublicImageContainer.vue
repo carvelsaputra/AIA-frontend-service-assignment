@@ -19,19 +19,12 @@
             solo-inverted
             hide-details
             prepend-inner-icon="mdi-magnify"
-            label="Search"
+            label="Find Amazing Inspiration Here"
           ></v-text-field>
+          <v-btn class="ml-3" color="warning"
+            ><v-icon>mdi-magnify</v-icon>Search</v-btn
+          >
           <template v-if="$vuetify.breakpoint.mdAndUp">
-            <v-spacer></v-spacer>
-            <v-select
-              v-model="sortBy"
-              flat
-              solo-inverted
-              hide-details
-              :items="keys"
-              prepend-inner-icon="mdi-magnify"
-              label="Sort by"
-            ></v-select>
             <v-spacer></v-spacer>
             <v-btn-toggle v-model="sortDesc" mandatory>
               <v-btn large depressed color="#d31145" :value="false">
@@ -57,11 +50,10 @@
           >
             <v-card height="100%">
               <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-              ></v-img>
+                v-bind:src="'data:image/jpeg;base64,' + item.media.photo"
+              />
               <v-card-title class="subheading font-weight-bold">
-                {{ item.title }}
+                {{ item.title || "No Title" }}
               </v-card-title>
 
               <v-divider></v-divider>
@@ -252,12 +244,8 @@ export default {
     };
   },
   mounted() {
-    this.fetch().then((res) => {
-      console.log(res);
-      console.log(this.list);
-    });
+    this.fetch();
   },
-
   computed: {
     ...mapGetters({
       fetching: "publicImage/fetching",
