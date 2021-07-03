@@ -1,5 +1,6 @@
 // dependencies
 import "./axios";
+import "./lottie";
 // import "./vuex";
 
 // dependencies injection
