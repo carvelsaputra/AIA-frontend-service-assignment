@@ -18,10 +18,10 @@ export default {
     },
   },
   actions: {
-    fetch({ commit }) {
+    fetch({ commit }, payload) {
       commit("isFetching", true);
 
-      return axios.get("public-image").then((res) => {
+      return axios.get("public-image", payload).then((res) => {
         commit("setList", res.data);
         commit("isFetching", false);
       });
