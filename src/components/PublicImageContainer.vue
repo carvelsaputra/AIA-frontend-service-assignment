@@ -10,7 +10,7 @@
       hide-default-footer
     >
       <template v-slot:header>
-        <v-toolbar dark color="#d31145" class="mb-1">
+        <v-toolbar dark color="#d31145" class="mb-1" style="border-radius:10px">
           <v-text-field
             v-model="search"
             clearable
@@ -48,7 +48,7 @@
             lg="3"
           >
             <v-hover v-slot:default="{ hover }">
-              <v-card height="100%" :elevation="hover ? 6 : 3">
+              <v-card height="100%" :elevation="hover ? 6 : 3" style="border-radius:10px">
                 <v-img
                   height="250px"
                   v-bind:src="'data:image/jpeg;base64,' + item.media.photo"
