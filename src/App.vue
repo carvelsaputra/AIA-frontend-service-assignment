@@ -22,7 +22,6 @@
                   are you? <br />hope all of you still healthy in this pandemic.
                   <br />Thanks for reviewing my assignment, hope you guys like
                   it. have a nice day.
-                  <span> </span>
                 </div>
                 <div>
                   <lottie-player

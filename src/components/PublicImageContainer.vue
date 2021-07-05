@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid data-testid="container">
     <v-data-iterator
       :loading="fetching"
       :items="list"
