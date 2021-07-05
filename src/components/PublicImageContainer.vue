@@ -20,20 +20,20 @@
             prepend-inner-icon="mdi-magnify"
             label="Find Amazing Inspiration Here"
           ></v-text-field>
-          <v-btn class="ml-3" color="warning" @click="find"
-            ><v-icon>mdi-magnify</v-icon>Search</v-btn
-          >
-          <template v-if="$vuetify.breakpoint.mdAndUp">
-            <v-spacer></v-spacer>
-            <v-btn-toggle v-model="sortDesc" mandatory>
-              <v-btn large depressed color="#d31145" :value="false">
-                <v-icon>mdi-arrow-up</v-icon>
-              </v-btn>
-              <v-btn large depressed color="#d31145" :value="true">
-                <v-icon>mdi-arrow-down</v-icon>
-              </v-btn>
-            </v-btn-toggle>
-          </template>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="ml-3"
+                fab
+                color="warning"
+                v-on="on"
+                @click="find"
+                v-bind="attrs"
+                ><v-icon>mdi-magnify</v-icon></v-btn
+              >
+            </template>
+            <span>Click this button to find</span>
+          </v-tooltip>
         </v-toolbar>
       </template>
 
@@ -48,7 +48,11 @@
             lg="3"
           >
             <v-hover v-slot:default="{ hover }">
-              <v-card height="100%" :elevation="hover ? 6 : 3" style="border-radius:10px">
+              <v-card
+                height="100%"
+                :elevation="hover ? 6 : 3"
+                style="border-radius:10px"
+              >
                 <v-img
                   height="250px"
                   v-bind:src="'data:image/jpeg;base64,' + item.media.photo"

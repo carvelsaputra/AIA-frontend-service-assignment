@@ -9,15 +9,15 @@
     </v-card>
     <v-main>
       <v-container>
-        <v-dialog v-model="dialog" max-width="1000">
+        <v-dialog v-model="dialog" max-width="1100">
           <v-card>
             <v-card-title class="text-h5 white--text pink darken-1">
               Dear Reviewer
             </v-card-title>
 
             <v-card-text>
-              <div class="d-flex flex-row">
-                <div class="grey--text title mx-auto mt-3" align="left">
+              <div class="d-flex flex-row flex-wrap" >
+                <div class="grey--text title mx-auto mt-3" align="left" cols="12" sm="12" md="12" >
                   Hello There <v-icon>mdi-emoticon-happy-outline</v-icon> how
                   are you? <br />hope all of you still healthy in this pandemic.
                   <br />Thanks for reviewing my assignment, hope you guys like

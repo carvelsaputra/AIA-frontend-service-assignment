@@ -1,32 +1,25 @@
-// Libraries
+import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
 
-// Components
 import PublicImageContainer from "../components/PublicImageContainer";
+import vuex from "../plugins/vuex"
 
-//vuex
-// import publicImageModule from "../store/publicImage";
+import Vuex from "vuex";
 
-import 'jest-canvas-mock';
-import plugins from "../plugins/index";
-
-// Utilities
-const { createLocalVue, mount } = require("@vue/test-utils");
-
+const localVue = createLocalVue();
+localVue.use(Vuex);
 describe("PublicImageContainer.vue", () => {
-  let localVue;
-  let wrapper;
+  let store;
   beforeEach(() => {
-    localVue = createLocalVue(); // because of vuetify, we should use a localVue instance
-
-    wrapper = mount(PublicImageContainer, {
-      localVue,
-      ...plugins,
+    store = vuex
+  });
+  it("should render Vue Instance", () => {
+    const wrapper = shallowMount(PublicImageContainer, { store, localVue });
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
+  it("should render Vue Instance", () => {
+      const wrapper = shallowMount(PublicImageContainer, { store, localVue });
+      let data = store.getters.list
+      expect(wrapper.isVueInstance()).toBe(true);
+      console.log(data);
     });
-  });
-
-
-  it("should render the Container", () => {
-    // to make sure we are free from vuetify components in our tests, use data-testid attributes to search for elements
-    expect(true);
-  });
 });
