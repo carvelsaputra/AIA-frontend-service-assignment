@@ -24,11 +24,11 @@
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 class="ml-3"
-                fab
                 color="warning"
                 v-on="on"
                 @click="find"
                 v-bind="attrs"
+                fab
                 ><v-icon>mdi-magnify</v-icon></v-btn
               >
             </template>
@@ -135,16 +135,6 @@ export default {
       page: 1,
       itemsPerPage: 4,
       sortBy: "name",
-      keys: [
-        "Name",
-        "Calories",
-        "Fat",
-        "Carbs",
-        "Protein",
-        "Sodium",
-        "Calcium",
-        "Iron",
-      ],
     };
   },
   mounted() {
